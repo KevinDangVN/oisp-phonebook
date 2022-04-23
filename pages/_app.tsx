@@ -1,8 +1,8 @@
-import React from 'react';
-import { AppProps } from 'next/app';
+import React from 'react'
+import { AppProps } from 'next/app'
 
-import '../styles/index.css';
-import Head from 'next/head';
+import '../styles/index.css'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>OISP Phonebook</title>
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
