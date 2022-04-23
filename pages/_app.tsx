@@ -1,18 +1,8 @@
-import React from 'react'
-import { AppProps } from 'next/app'
-
-import '../styles/index.css'
-import Head from 'next/head'
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Head>
-        <title>OISP Phonebook</title>
-      </Head>
-      <Component {...pageProps} />
-    </>
-  )
+  return <Component {...pageProps} />
 }
 
 export default MyApp
