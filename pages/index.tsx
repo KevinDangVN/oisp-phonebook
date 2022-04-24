@@ -8,7 +8,7 @@ import Table from '../components/Table/Table'
 const Home: NextPage = () => {
   return (
     <Layout>
-      <main className="w-11/12 max-w-[1000px] bg-white lg:w-[9000px] sm:w-[600px] md:w-[700px] h-[85vh] rounded drop-shadow px-3 py-3 prose prose-gray flex-col">
+      <main className="w-11/12 max-w-[1000px] bg-white lg:w-[9000px] sm:w-[600px] md:w-[700px] h-full rounded drop-shadow px-3 py-3 prose prose-gray flex-col">
         <Logo />
         <Heading title="PhoneBook" />
         <Table />

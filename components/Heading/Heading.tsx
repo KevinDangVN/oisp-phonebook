@@ -6,7 +6,7 @@ interface IHeading {
 
 const Heading: FC<IHeading> = ({ title }) => {
   return (
-    <div className="flex w-full uppercase justify-center text-3xl font-semibold text-sky-600">
+    <div className="flex w-full uppercase justify-center text-3xl font-semibold text-sky-600 my-4">
       {title}
     </div>
   )
