@@ -1,5 +1,5 @@
 const Table = () => (
-  <div className="px-5 overflow-auto max-h-[975px]">
+  <div className="px-5 overflow-auto max-h-[975px] h-5/6">
     <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border overflow-auto">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>

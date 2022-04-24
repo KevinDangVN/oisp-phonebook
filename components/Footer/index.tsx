@@ -1,3 +1,3 @@
-const Footer = () => <div>Footer</div>
+const Footer = () => <>Built with ❤️</>
 
 export default Footer
