@@ -36,3 +36,4 @@ yarn-error.log*
 
 .env
 assets/data_dien_thoai.xlsx
+assets/~$data_dien_thoai.xlsx
