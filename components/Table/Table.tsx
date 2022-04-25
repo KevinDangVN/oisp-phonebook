@@ -1,4 +1,11 @@
-const Table = () => (
+import { FC } from 'react'
+import { IPhoneBookData } from '../../interface/IPhoneBook'
+
+interface ITableProps {
+  data: IPhoneBookData[]
+}
+
+const Table: FC<ITableProps> = ({ data }) => (
   <div className="px-5 overflow-auto max-h-[975px] h-5/6">
     <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border overflow-auto">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -18,21 +25,21 @@ const Table = () => (
         </tr>
       </thead>
       <tbody>
-        {Array.from(Array(10).keys()).map((item) => {
+        {data.map((item, index) => {
           return (
             <tr
               className="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700"
-              key={item}
+              key={item.extension + item.name}
             >
               <th
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
               >
-                Apple MacBook Pro 17
+                {index + 1}
               </th>
-              <td className="px-6 py-4">Sliver</td>
-              <td className="px-6 py-4">Laptop</td>
-              <td className="px-6 py-4">$2999</td>
+              <td className="px-6 py-4">{item.extension}</td>
+              <td className="px-6 py-4">{item.name}</td>
+              <td className="px-6 py-4">{item.team}</td>
             </tr>
           )
         })}
