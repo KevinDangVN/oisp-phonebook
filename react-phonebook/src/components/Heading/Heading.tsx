@@ -4,12 +4,10 @@ interface IHeading {
   title: string
 }
 
-const Heading: FC<IHeading> = ({ title }) => {
+export const Heading: FC<IHeading> = ({ title }) => {
   return (
-    <div className="flex w-full uppercase justify-center text-3xl font-semibold text-sky-600 my-4">
+    <div className="flex w-full uppercase justify-center text-3xl font-semibold text-sky-600 my-2">
       {title}
     </div>
   )
 }
-
-export default Heading

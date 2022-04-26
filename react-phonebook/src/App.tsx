@@ -1,15 +1,28 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { read, utils } from 'xlsx'
-import './App.css'
-import Footer from './components/Footer/Footer'
-import Heading from './components/Heading/Heading'
-import Layout from './components/Layout/Layout'
-import Logo from './components/Logo/Logo'
+import './index.css'
+
 import { IPhoneBookData } from './interface/IPhoneBook'
+import { Layout } from './components/Layout'
+import { Logo } from './components/Logo'
+import { Heading } from './components/Heading'
+import { Table } from './components/Table'
+import { Pagination } from './components/Pagination'
+import { Footer } from './components/Footer'
 
 function App() {
+  const LIMIT = 10
   const [data, setData] = useState<IPhoneBookData[]>([])
+  const [tableData, setTableData] = useState<IPhoneBookData[]>([])
+  const [page, setPage] = useState<number>(1)
+  const [totalItem, setTotalItem] = useState<number>(0)
+
+  const handlePageChange = (currentPage: number) => {
+    setPage(currentPage)
+    setTableData(data.slice((currentPage - 1) * LIMIT, currentPage * LIMIT))
+  }
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -29,6 +42,8 @@ function App() {
         }
         console.log(phoneBook)
         setData([...phoneBook])
+        setTotalItem(phoneBook.length)
+        setTableData(phoneBook.slice(0, LIMIT))
         // const response = await axios.get(temp, {
         //   responseType: 'arraybuffer',
         // })
@@ -46,7 +61,8 @@ function App() {
       <main className="w-11/12 max-w-[1000px] bg-white lg:w-[9000px] sm:w-[600px] md:w-[700px] h-full rounded drop-shadow px-3 py-3 mb-3 prose prose-gray flex-col relative">
         <Logo />
         <Heading title="PhoneBook" />
-        {/* <Table data={data} /> */}
+        <Table data={tableData} />
+        <Pagination currentPage={page} limit={LIMIT} totalItem={totalItem} />
       </main>
       <footer>
         <Footer />

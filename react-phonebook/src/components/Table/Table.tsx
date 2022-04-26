@@ -5,9 +5,9 @@ interface ITableProps {
   data: IPhoneBookData[]
 }
 
-const Table: FC<ITableProps> = ({ data }) => (
-  <div className="px-5 overflow-auto max-h-[975px] h-5/6">
-    <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border overflow-auto">
+export const Table: FC<ITableProps> = ({ data }) => (
+  <div className="px-5 max-h-[975px] h-5/6 overflow-y-auto mx-auto flex justify-center">
+    <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="px-6 py-3">
@@ -33,13 +33,13 @@ const Table: FC<ITableProps> = ({ data }) => (
             >
               <th
                 scope="row"
-                className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                className="px-6 py-1 font-medium text-gray-900 dark:text-white whitespace-nowrap"
               >
                 {index + 1}
               </th>
-              <td className="px-6 py-4">{item.extension}</td>
-              <td className="px-6 py-4">{item.name}</td>
-              <td className="px-6 py-4">{item.team}</td>
+              <td className="px-6 py-1">{item.extension}</td>
+              <td className="px-6 py-1">{item.name}</td>
+              <td className="px-6 py-1">{item.team}</td>
             </tr>
           )
         })}
@@ -47,5 +47,3 @@ const Table: FC<ITableProps> = ({ data }) => (
     </table>
   </div>
 )
-
-export default Table
