@@ -62,7 +62,12 @@ function App() {
         <Logo />
         <Heading title="PhoneBook" />
         <Table data={tableData} />
-        <Pagination currentPage={page} limit={LIMIT} totalItem={totalItem} />
+        <Pagination
+          currentPage={page}
+          limit={LIMIT}
+          totalItem={totalItem}
+          onPageChange={handlePageChange}
+        />
       </main>
       <footer>
         <Footer />

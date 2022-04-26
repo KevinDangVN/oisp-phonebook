@@ -4,19 +4,21 @@ interface IPaginationProps {
   totalItem: number
   currentPage: number
   limit: number
+  onPageChange: (page: number) => void
 }
 
 export const Pagination: FC<IPaginationProps> = ({
   currentPage,
   limit,
   totalItem,
+  onPageChange,
 }) => {
   const totalPage = Math.floor(totalItem / limit) + 1
   const pageArray = Array.from({ length: totalPage }, (_, i) => i + 1)
   return (
     <>
-      <nav aria-label="Page navigation example">
-        <ul className="inline-flex items-center -space-x-px">
+      <nav aria-label="navigation" className="flex justify-center ">
+        <ul className="inline-flex items-center -space-x-px my-4">
           <li>
             <button className="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               <span className="sr-only">Previous</span>
@@ -36,11 +38,11 @@ export const Pagination: FC<IPaginationProps> = ({
           </li>
           {pageArray.map((page, index) =>
             currentPage === page ? (
-              <li key={Math.random()}>
+              <li key={Math.random()} onClick={() => onPageChange(page)}>
                 <button className="pagination-selected">{page}</button>
               </li>
             ) : (
-              <li key={Math.random()}>
+              <li key={Math.random()} onClick={() => onPageChange(page)}>
                 <button className="pagination-item">{page}</button>
               </li>
             )
