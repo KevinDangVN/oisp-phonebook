@@ -1,24 +1,42 @@
+import { useState } from 'react'
 import { useEffect } from 'react'
-import { read } from 'xlsx'
+import { read, utils } from 'xlsx'
 import './App.css'
 import Footer from './components/Footer/Footer'
 import Heading from './components/Heading/Heading'
 import Layout from './components/Layout/Layout'
 import Logo from './components/Logo/Logo'
+import { IPhoneBookData } from './interface/IPhoneBook'
 
 function App() {
+  const [data, setData] = useState<IPhoneBookData[]>([])
   useEffect(() => {
     const getData = async () => {
-      const temp =
-        'https://res.cloudinary.com/dirkzzpfn/raw/upload/v1650941258/data_dien_thoai.xlsx'
-      const data = await (await fetch(temp)).arrayBuffer()
-      const workbook = read(data)
-      console.log(workbook)
-      // const response = await axios.get(temp, {
-      //   responseType: 'arraybuffer',
-      // })
-      // const data = new Uint8Array(response.data)
-      // const workbook = read(data, { type: 'array' })
+      try {
+        const url = process.env.REACT_APP_PHONEBOOK_URL as string
+        const raw = await (await fetch(url)).arrayBuffer()
+        const workbook = read(raw)
+        const rawData: any[] = utils.sheet_to_json(
+          workbook.Sheets[workbook.SheetNames[0]]
+        )
+        const phoneBook = [] as IPhoneBookData[]
+        for (let i = 1; i < rawData.length; i += 1) {
+          phoneBook.push({
+            extension: rawData[i]['__EMPTY'] as number,
+            name: rawData[i]['INTERNAL PHONE DIRECTORY'] as string,
+            team: rawData[i]['__EMPTY_1'] as string,
+          })
+        }
+        console.log(phoneBook)
+        setData([...phoneBook])
+        // const response = await axios.get(temp, {
+        //   responseType: 'arraybuffer',
+        // })
+        // const data = new Uint8Array(response.data)
+        // const workbook = read(data, { type: 'array' })
+      } catch (error) {
+        console.log(error)
+      }
     }
     getData()
   }, [])
