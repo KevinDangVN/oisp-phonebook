@@ -22,6 +22,15 @@ function App() {
     setPage(currentPage)
     setTableData(data.slice((currentPage - 1) * LIMIT, currentPage * LIMIT))
   }
+  const totalPage = Math.floor(totalItem / LIMIT) + 1
+
+  const onNext = () => {
+    if (page + 1 <= totalPage) handlePageChange(page + 1)
+  }
+
+  const onPrevious = () => {
+    if (page - 1 >= 1) handlePageChange(page - 1)
+  }
 
   useEffect(() => {
     const getData = async () => {
@@ -64,9 +73,10 @@ function App() {
         <Table data={tableData} />
         <Pagination
           currentPage={page}
-          limit={LIMIT}
-          totalItem={totalItem}
           onPageChange={handlePageChange}
+          totalPage={totalPage}
+          onNext={onNext}
+          onPrevious={onPrevious}
         />
       </main>
       <footer>

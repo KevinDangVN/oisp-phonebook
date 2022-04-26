@@ -1,26 +1,31 @@
 import { FC } from 'react'
 
 interface IPaginationProps {
-  totalItem: number
   currentPage: number
-  limit: number
+
   onPageChange: (page: number) => void
+  onNext: () => void
+  onPrevious: () => void
+  totalPage: number
 }
 
 export const Pagination: FC<IPaginationProps> = ({
   currentPage,
-  limit,
-  totalItem,
   onPageChange,
+  totalPage,
+  onNext,
+  onPrevious,
 }) => {
-  const totalPage = Math.floor(totalItem / limit) + 1
   const pageArray = Array.from({ length: totalPage }, (_, i) => i + 1)
   return (
     <>
       <nav aria-label="navigation" className="flex justify-center ">
         <ul className="inline-flex items-center -space-x-px my-4">
           <li>
-            <button className="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button
+              className="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              onClick={onPrevious}
+            >
               <span className="sr-only">Previous</span>
               <svg
                 className="w-5 h-5"
@@ -36,7 +41,7 @@ export const Pagination: FC<IPaginationProps> = ({
               </svg>
             </button>
           </li>
-          {pageArray.map((page, index) =>
+          {pageArray.map((page) =>
             currentPage === page ? (
               <li key={Math.random()} onClick={() => onPageChange(page)}>
                 <button className="pagination-selected">{page}</button>
@@ -48,7 +53,10 @@ export const Pagination: FC<IPaginationProps> = ({
             )
           )}
           <li>
-            <button className="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <button
+              className="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              onClick={onNext}
+            >
               <span className="sr-only">Next</span>
               <svg
                 className="w-5 h-5"
