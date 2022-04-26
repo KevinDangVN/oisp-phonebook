@@ -1,20 +1,24 @@
+import { useEffect } from 'react'
+import { read } from 'xlsx'
 import './App.css'
+import Footer from './components/Footer/Footer'
+import Heading from './components/Heading/Heading'
 import Layout from './components/Layout/Layout'
 import Logo from './components/Logo/Logo'
-import Heading from './components/Heading/Heading'
-import Table from './components/Table/Table'
-import Footer from './components/Footer/Footer'
-import readXlsxFile from 'read-excel-file'
-import { useEffect } from 'react'
-import { readFile, utils } from 'xlsx'
 
 function App() {
   useEffect(() => {
     const getData = async () => {
-      const workbook = readFile('/data.xlsx')
-      const sheet = workbook.Sheets[workbook.SheetNames[0]]
-      const jsonSheet = utils.sheet_to_json(sheet)
-      console.log(jsonSheet)
+      const temp =
+        'https://res.cloudinary.com/dirkzzpfn/raw/upload/v1650941258/data_dien_thoai.xlsx'
+      const data = await (await fetch(temp)).arrayBuffer()
+      const workbook = read(data)
+      console.log(workbook)
+      // const response = await axios.get(temp, {
+      //   responseType: 'arraybuffer',
+      // })
+      // const data = new Uint8Array(response.data)
+      // const workbook = read(data, { type: 'array' })
     }
     getData()
   }, [])
