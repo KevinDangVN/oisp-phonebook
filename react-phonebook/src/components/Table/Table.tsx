@@ -6,7 +6,7 @@ interface ITableProps {
 }
 
 export const Table: FC<ITableProps> = ({ data }) => (
-  <div className="px-5 py-1 max-h-[560px] h-4/6 overflow-y-auto mx-auto flex justify-center align-text-top">
+  <div className="px-5 py-1 max-h-[500px] h-3/6 overflow-y-auto mx-auto flex justify-center align-text-top">
     <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[600px]">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
