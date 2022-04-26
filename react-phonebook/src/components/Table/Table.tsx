@@ -6,8 +6,8 @@ interface ITableProps {
 }
 
 export const Table: FC<ITableProps> = ({ data }) => (
-  <div className="px-5 max-h-[650px] h-5/6 overflow-y-auto mx-auto flex justify-center">
-    <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[650px]">
+  <div className="px-5 py-1 max-h-[560px] h-4/6 overflow-y-auto mx-auto flex justify-center align-text-top">
+    <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[600px]">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="px-6 py-2 w-[20px]">
@@ -28,18 +28,18 @@ export const Table: FC<ITableProps> = ({ data }) => (
         {data.map((item, index) => {
           return (
             <tr
-              className="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700"
+              className="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700  align-text-top"
               key={Math.random()}
             >
               <th
                 scope="row"
-                className="px-6 py-0.5 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                className="px-6 pt-2 font-medium text-gray-900 dark:text-white whitespace-nowrap"
               >
                 {index + 1}
               </th>
-              <td className="px-6 py-0.5">{item.extension}</td>
-              <td className="px-6 py-0.5">{item.name}</td>
-              <td className="px-6 py-0.5">{item.team}</td>
+              <td className="px-6 pt-2">{item.extension}</td>
+              <td className="px-6 pt-2">{item.name}</td>
+              <td className="px-6 pt-2">{item.team}</td>
             </tr>
           )
         })}

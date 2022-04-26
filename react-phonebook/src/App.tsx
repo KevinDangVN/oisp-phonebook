@@ -10,6 +10,7 @@ import { Heading } from './components/Heading'
 import { Table } from './components/Table'
 import { Pagination } from './components/Pagination'
 import { Footer } from './components/Footer'
+import { Search } from './components/Search'
 
 function App() {
   const LIMIT = 10
@@ -17,6 +18,7 @@ function App() {
   const [tableData, setTableData] = useState<IPhoneBookData[]>([])
   const [page, setPage] = useState<number>(1)
   const [totalItem, setTotalItem] = useState<number>(0)
+  const [text, setText] = useState<string>('')
 
   const handlePageChange = (currentPage: number) => {
     setPage(currentPage)
@@ -30,6 +32,20 @@ function App() {
 
   const onPrevious = () => {
     if (page - 1 >= 1) handlePageChange(page - 1)
+  }
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim().normalize()
+    setText(value)
+    if (value === '') return handlePageChange(page)
+    const filterData = data.filter(
+      (item) =>
+        item.extension.toString().normalize() === value ||
+        item.name.normalize() === value ||
+        item.team.normalize() === value
+    )
+    setTableData([...filterData])
+    console.log(e.target.value)
   }
 
   useEffect(() => {
@@ -49,7 +65,6 @@ function App() {
             team: rawData[i]['__EMPTY_1'] as string,
           })
         }
-        console.log(phoneBook)
         setData([...phoneBook])
         setTotalItem(phoneBook.length)
         setTableData(phoneBook.slice(0, LIMIT))
@@ -70,6 +85,7 @@ function App() {
       <main className="w-11/12 max-w-[1000px] bg-white lg:w-[9000px] sm:w-[600px] md:w-[700px] h-full rounded drop-shadow px-3 py-3 mb-3 prose prose-gray flex-col relative">
         <Logo />
         <Heading title="PhoneBook" />
+        <Search text={text} onChange={onChange} />
         <Table data={tableData} />
         <Pagination
           currentPage={page}
