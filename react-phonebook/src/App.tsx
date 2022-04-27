@@ -20,6 +20,23 @@ function App() {
   const [totalItem, setTotalItem] = useState<number>(0)
   const [text, setText] = useState<string>('')
 
+  const stringToASCII = (str: string): string => {
+    return str
+      .replace(/[àáảãạâầấẩẫậăằắẳẵặ]/g, 'a')
+      .replace(/[èéẻẽẹêềếểễệ]/g, 'e')
+      .replace(/[đ]/g, 'd')
+      .replace(/[ìíỉĩị]/g, 'i')
+      .replace(/[òóỏõọôồốổỗộơờớởỡợ]/g, 'o')
+      .replace(/[ùúủũụưừứửữự]/g, 'u')
+      .replace(/[ỳýỷỹỵ]/g, 'y')
+  }
+
+  const isInclude = (str: string, searchText: string): boolean => {
+    const convertedStr = stringToASCII(str.toLowerCase())
+    const strToSearch = stringToASCII(searchText.toLowerCase())
+    return convertedStr.includes(strToSearch)
+  }
+
   const handlePageChange = (currentPage: number) => {
     setPage(currentPage)
     setTableData(data.slice((currentPage - 1) * LIMIT, currentPage * LIMIT))
@@ -35,14 +52,14 @@ function App() {
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim().normalize()
+    const value = e.target.value
     setText(value)
     if (value === '') return handlePageChange(page)
     const filterData = data.filter(
       (item) =>
         item.extension.toString().normalize() === value ||
-        item.name.normalize() === value ||
-        item.team.normalize() === value
+        isInclude(item.name, value) ||
+        isInclude(item.team, value)
     )
     setTableData([...filterData])
     console.log(e.target.value)
