@@ -7,8 +7,8 @@ interface ITableProps {
 
 export const Table: FC<ITableProps> = ({ data }) => (
   <div className="px-5 py-1 max-h-[500px] h-3/6 overflow-y-auto mx-auto flex justify-center align-text-top">
-    <table className="text-sm text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[600px]">
-      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table className="text-base text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[600px]">
+      <thead className="text-base text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="px-6 py-2 w-[20px]">
             No
@@ -16,7 +16,7 @@ export const Table: FC<ITableProps> = ({ data }) => (
           <th scope="col" className="px-6 py-2 w-[130px]">
             Extension
           </th>
-          <th scope="col" className="px-6 py-2 w-[190px]">
+          <th scope="col" className="px-6 py-2 w-[160px]">
             Name
           </th>
           <th scope="col" className="px-6 py-2">

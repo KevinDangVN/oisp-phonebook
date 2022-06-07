@@ -1,6 +1,7 @@
 {
   "name": "react-phonebook",
   "version": "0.1.0",
+  "homepage": "https://docs.oisp.edu.vn/ext",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",

@@ -12,7 +12,7 @@ export const Search: FC<ISearchProps> = ({ text, onChange }) => {
         <div className="justify-start">
           <label
             htmlFor="search"
-            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            className="block mb-2 text-base font-medium text-gray-900 text-left"
           >
             Search
           </label>
