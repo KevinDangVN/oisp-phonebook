@@ -18,11 +18,11 @@ const useGetData = () => {
           workbook.Sheets[workbook.SheetNames[0]]
         )
         const phoneBook = [] as IPhoneBookData[]
-        for (let i = 1; i < rawData.length; i += 1) {
+        for (let i = 0; i < rawData.length; i += 1) {
           phoneBook.push({
-            extension: rawData[i]['__EMPTY'] as number,
-            name: rawData[i]['INTERNAL PHONE DIRECTORY'] as string,
-            team: rawData[i]['__EMPTY_1'] as string,
+            extension: rawData[i]['Extension'] as number,
+            name: rawData[i]['Name'] as string,
+            team: rawData[i]['Department/Team'] as string,
           })
         }
         setData([...phoneBook])
