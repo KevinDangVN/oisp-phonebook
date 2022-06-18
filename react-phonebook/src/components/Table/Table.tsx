@@ -7,19 +7,19 @@ interface ITableProps {
 
 export const Table: FC<ITableProps> = ({ data }) => (
   <div className="px-5 py-1 max-h-[500px] h-3/6 overflow-y-auto mx-auto flex justify-center align-text-top">
-    <table className="text-base text-left shadow-md text-gray-500 dark:text-gray-400 border-collapse border w-[600px]">
+    <table className="text-base text-left shadow-md text-gray-500 w-4/5 dark:text-gray-400 border-collapse border lg:w-[900px] md:w-[700px]">
       <thead className="text-base text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="px-6 py-2 w-[20px]">
+          <th scope="col" className="px-6 py-2 w-2/12">
             No
           </th>
-          <th scope="col" className="px-6 py-2 w-[130px]">
-            Extension
+          <th scope="col" className="px-6 py-2 w-2/12">
+            Ext
           </th>
-          <th scope="col" className="px-6 py-2 w-[160px]">
+          <th scope="col" className="px-6 py-2 w-5/12">
             Name
           </th>
-          <th scope="col" className="px-6 py-2">
+          <th scope="col" className="px-6 py-2 w-3/12">
             Department/ Team
           </th>
         </tr>
