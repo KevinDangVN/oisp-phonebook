@@ -14,7 +14,7 @@ export const Table: FC<ITableProps> = ({ data }) => (
             No
           </th>
           <th scope="col" className="px-6 py-2 w-2/12">
-            Ext
+            Ext.
           </th>
           <th scope="col" className="px-6 py-2 w-5/12">
             Name
