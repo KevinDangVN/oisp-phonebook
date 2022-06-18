@@ -30,7 +30,7 @@ function App() {
 
   return (
     <Layout>
-      <main className="w-11/12 max-w-[1000px] bg-white lg:w-[900px] sm:w-[600px] md:w-[700px] h-full rounded drop-shadow px-3 py-3 mb-3 prose prose-gray flex-col relative text-base">
+      <main className="w-11/12 max-w-[1200px] bg-white lg:w-[1000px] sm:w-[6300px] md:w-[750px] h-full rounded drop-shadow px-3 py-3 mb-3 prose prose-gray flex-col relative text-base">
         <Logo />
         <Heading title="INTERNAL PHONE DIRECTORY" />
         <Search text={text} onChange={onChange} />
