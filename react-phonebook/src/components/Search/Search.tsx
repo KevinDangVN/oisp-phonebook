@@ -19,7 +19,7 @@ export const Search: FC<ISearchProps> = ({ text, onChange }) => {
           <input
             type="text"
             id="search"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 focus-visible:border-blue-500 block w-[400px] p-2.5 focus:outline-none"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 focus-visible:border-blue-500 block w-[200px] md:w-[400px] p-2.5 focus:outline-none"
             placeholder=""
             value={text || ''}
             onChange={onChange}
