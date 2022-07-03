@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Footer } from './components/Footer'
 import { Heading } from './components/Heading'
 import { Layout } from './components/Layout'
@@ -13,6 +14,7 @@ import './index.css'
 const LIMIT = 10
 
 function App() {
+  const [isShowPagination, setShowPagination] = useState<boolean>(true)
   const { data, tableData, totalItem, setTableData } = useGetData()
   const { onNext, onPrevious, totalPage, handlePageChange, page } =
     usePagination({
@@ -26,6 +28,7 @@ function App() {
     setTableData,
     data,
     page,
+    setShowPagination,
   })
 
   return (
@@ -35,13 +38,15 @@ function App() {
         <Heading title="INTERNAL PHONE DIRECTORY" />
         <Search text={text} onChange={onChange} />
         <Table data={tableData} />
-        <Pagination
-          currentPage={page}
-          onPageChange={handlePageChange}
-          totalPage={totalPage}
-          onNext={onNext}
-          onPrevious={onPrevious}
-        />
+        {isShowPagination && (
+          <Pagination
+            currentPage={page}
+            onPageChange={handlePageChange}
+            totalPage={totalPage}
+            onNext={onNext}
+            onPrevious={onPrevious}
+          />
+        )}
       </main>
       <footer>
         <Footer />

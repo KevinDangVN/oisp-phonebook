@@ -6,11 +6,13 @@ const useSearch = ({
   data,
   page,
   setTableData,
+  setShowPagination,
 }: {
   handlePageChange: (currentPage: number) => void
   data: IPhoneBookData[]
   setTableData: React.Dispatch<React.SetStateAction<IPhoneBookData[]>>
   page: number
+  setShowPagination: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const [text, setText] = useState<string>('')
 
@@ -34,7 +36,11 @@ const useSearch = ({
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setText(value)
-    if (value === '') return handlePageChange(page)
+    if (value === '') {
+      setShowPagination(true)
+      return handlePageChange(page)
+    }
+    setShowPagination(false)
     const filterData = data.filter(
       (item) =>
         item.extension.toString().normalize() === value ||
